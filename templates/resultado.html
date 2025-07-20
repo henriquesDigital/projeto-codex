@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Resultado</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+<div class="container" style="text-align:center;">
     <p>🎯 Com base na sua meta de crescimento, recomendamos um investimento inicial a partir de R$ 700/mês em anúncios, além do valor de gestão da campanha. Esse valor permite aplicar estratégias com volume suficiente para gerar resultados reais, previsíveis e escaláveis.</p>
-    <p>Você está de acordo com investir esse valor?</p>
-    <a href="{{ whatsapp_link }}">Sim</a>
-    <a href="{{ url_for('nao', nome=nome, segmento=segmento) }}">Não</a>
+    <a href="{{ whatsapp_link }}" class="btn">Falar com um especialista agora pelo WhatsApp</a>
+</div>
 </body>
 </html>

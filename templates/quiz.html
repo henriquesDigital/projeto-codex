@@ -3,35 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <title>Quiz</title>
-    <script>
-    function mostraMensagem(valor){
-        document.getElementById('msg_sim').style.display = valor === 'sim' ? 'block' : 'none';
-        document.getElementById('msg_nao').style.display = valor === 'nao' ? 'block' : 'none';
-    }
-    </script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <form method="POST" action="{{ url_for('resultado') }}">
-        <label>Nome do cliente:<br>
-            <input type="text" name="nome" required>
-        </label><br>
-        <label>Nome da empresa:<br>
-            <input type="text" name="empresa" required>
-        </label><br>
-        <label>Segmento de atuação:<br>
-            <input type="text" name="segmento" required>
-        </label><br>
-        <p>Você já sabe como funcionam os anúncios online?</p>
-        <label><input type="radio" name="conhece" value="Sim" onclick="mostraMensagem('sim')" required> Sim</label>
-        <label><input type="radio" name="conhece" value="Não" onclick="mostraMensagem('nao')"> Não</label>
-        <div id="msg_sim" style="display:none;">Perfeito! Então você já sabe o quanto o tráfego pago pode ser decisivo para alavancar as vendas e aumentar sua presença digital.</div>
-        <div id="msg_nao" style="display:none;">Imagina que você tem uma loja em uma rua vazia. Anunciar online é como colocar sua vitrine no meio do maior shopping do mundo, onde todo mundo passa o tempo todo. Com o tráfego pago, você atrai as pessoas certas com orçamento controlado.</div>
-        <p>Qual a meta de crescimento do seu faturamento nos próximos 90 dias?</p>
-        <label><input type="radio" name="meta" value="10%" required>10%</label>
-        <label><input type="radio" name="meta" value="20%" required>20%</label>
-        <label><input type="radio" name="meta" value="30%" required>30%</label>
-        <br>
-        <button type="submit">Enviar</button>
+<div class="container">
+    <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+    <form method="POST" action="{{ url_for('resultado') }}" id="quizForm">
+        <div class="step active">
+            <label>Qual seu nome?<br>
+                <input type="text" name="nome" required>
+            </label>
+            <button type="button" class="next">Próximo</button>
+        </div>
+        <div class="step">
+            <label>Nome da sua empresa?<br>
+                <input type="text" name="empresa" required>
+            </label>
+            <button type="button" class="prev">Voltar</button>
+            <button type="button" class="next">Próximo</button>
+        </div>
+        <div class="step">
+            <label>Qual seu setor de atuação?<br>
+                <input type="text" name="segmento" required>
+            </label>
+            <button type="button" class="prev">Voltar</button>
+            <button type="button" class="next">Próximo</button>
+        </div>
+        <div class="step">
+            <p>Você já conhece anúncios online?</p>
+            <label><input type="radio" name="conhece" value="Sim" required> Sim</label>
+            <label><input type="radio" name="conhece" value="Não"> Não</label>
+            <div id="msg_sim" style="display:none;">Perfeito! Então você já sabe o quanto o tráfego pago pode ser decisivo para alavancar as vendas e aumentar sua presença digital.</div>
+            <div id="msg_nao" style="display:none;">Imagina que você tem uma loja em uma rua vazia. Anunciar online é como colocar sua vitrine no meio do maior shopping do mundo, onde todo mundo passa o tempo todo. Com o tráfego pago, você atrai as pessoas certas com orçamento controlado.</div>
+            <button type="button" class="prev">Voltar</button>
+            <button type="button" class="next">Próximo</button>
+        </div>
+        <div class="step">
+            <p>Qual a meta de faturamento para os próximos 90 dias?</p>
+            <label><input type="radio" name="meta" value="10%" required> aumentar 10%</label>
+            <label><input type="radio" name="meta" value="20%" required> aumentar 20%</label>
+            <label><input type="radio" name="meta" value="30% ou mais" required> aumentar 30% ou mais</label>
+            <button type="button" class="prev">Voltar</button>
+            <button type="submit">Enviar</button>
+        </div>
     </form>
+</div>
+<script>
+const steps = document.querySelectorAll('.step');
+const nextBtns = document.querySelectorAll('.next');
+const prevBtns = document.querySelectorAll('.prev');
+const progressBar = document.getElementById('progressBar');
+let current = 0;
+
+function showStep(i){
+    steps.forEach((s,idx)=>{ s.classList.toggle('active', idx===i); });
+    progressBar.style.width = (i/(steps.length-1))*100 + '%';
+    current = i;
+}
+
+nextBtns.forEach(btn=>btn.addEventListener('click', ()=>{
+    if(current < steps.length-1){
+        showStep(current+1);
+    }
+}));
+prevBtns.forEach(btn=>btn.addEventListener('click', ()=>{
+    if(current>0){
+        showStep(current-1);
+    }
+}));
+
+const radios = document.querySelectorAll('input[name="conhece"]');
+radios.forEach(r=>r.addEventListener('change', ()=>{
+    document.getElementById('msg_sim').style.display = r.value==='Sim' && r.checked? 'block':'none';
+    document.getElementById('msg_nao').style.display = r.value==='Não' && r.checked? 'block':'none';
+}));
+
+showStep(0);
+</script>
 </body>
 </html>

@@ -48,14 +48,8 @@ def resultado():
     }
     salvar_resposta(dados)
     link = gerar_link_whatsapp(dados['nome'], dados['segmento'])
-    return render_template('resultado.html', whatsapp_link=link, nome=dados['nome'], segmento=dados['segmento'])
+    return render_template('resultado.html', whatsapp_link=link)
 
-@app.route('/nao')
-def nao():
-    nome = request.args.get('nome', '')
-    segmento = request.args.get('segmento', '')
-    link = gerar_link_whatsapp(nome, segmento)
-    return render_template('obrigado.html', whatsapp_link=link)
 
 if __name__ == '__main__':
     app.run(debug=True)

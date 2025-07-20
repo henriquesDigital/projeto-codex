@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+button, input[type="text"] {
+    font-size: 1rem;
+}
+
+button {
+    background: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #43a047;
+}
+
+.progress {
+    width: 100%;
+    background: #eee;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #4caf50;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+.step {
+    display: none;
+}
+.step.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(10px);} 
+    to {opacity: 1; transform: translateY(0);} 
+}
+
+label {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    background: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+
+.btn:hover {
+    background: #43a047;
+}
