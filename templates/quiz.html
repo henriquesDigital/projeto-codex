@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <script>
+    function mostraMensagem(valor){
+        document.getElementById('msg_sim').style.display = valor === 'sim' ? 'block' : 'none';
+        document.getElementById('msg_nao').style.display = valor === 'nao' ? 'block' : 'none';
+    }
+    </script>
+</head>
+<body>
+    <form method="POST" action="{{ url_for('resultado') }}">
+        <label>Nome do cliente:<br>
+            <input type="text" name="nome" required>
+        </label><br>
+        <label>Nome da empresa:<br>
+            <input type="text" name="empresa" required>
+        </label><br>
+        <label>Segmento de atuação:<br>
+            <input type="text" name="segmento" required>
+        </label><br>
+        <p>Você já sabe como funcionam os anúncios online?</p>
+        <label><input type="radio" name="conhece" value="Sim" onclick="mostraMensagem('sim')" required> Sim</label>
+        <label><input type="radio" name="conhece" value="Não" onclick="mostraMensagem('nao')"> Não</label>
+        <div id="msg_sim" style="display:none;">Perfeito! Então você já sabe o quanto o tráfego pago pode ser decisivo para alavancar as vendas e aumentar sua presença digital.</div>
+        <div id="msg_nao" style="display:none;">Imagina que você tem uma loja em uma rua vazia. Anunciar online é como colocar sua vitrine no meio do maior shopping do mundo, onde todo mundo passa o tempo todo. Com o tráfego pago, você atrai as pessoas certas com orçamento controlado.</div>
+        <p>Qual a meta de crescimento do seu faturamento nos próximos 90 dias?</p>
+        <label><input type="radio" name="meta" value="10%" required>10%</label>
+        <label><input type="radio" name="meta" value="20%" required>20%</label>
+        <label><input type="radio" name="meta" value="30%" required>30%</label>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
