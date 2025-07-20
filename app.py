@@ -33,6 +33,12 @@ def gerar_link_whatsapp(nome, segmento):
 def index():
     return render_template('index.html')
 
+
+@app.route('/catalogo')
+def catalogo():
+    """Exibe o catálogo de produtos."""
+    return render_template('catalogo.html')
+
 @app.route('/quiz')
 def quiz():
     return render_template('quiz.html')
