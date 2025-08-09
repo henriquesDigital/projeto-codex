@@ -1,11 +1,6 @@
-<!doctype html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Falar depois</title>
-</head>
-<body>
-    <p>Sem problemas! Se tiver dúvidas, me chama no WhatsApp ou salve nosso contato para quando estiver pronto.</p>
-    <a href="{{ whatsapp_link }}">Falar no WhatsApp</a>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Falar depois{% endblock %}
+{% block content %}
+<p>Sem problemas! Se tiver dúvidas, me chama no WhatsApp ou salve nosso contato para quando estiver pronto.</p>
+<a href="{{ whatsapp_link }}">Falar no WhatsApp</a>
+{% endblock %}
