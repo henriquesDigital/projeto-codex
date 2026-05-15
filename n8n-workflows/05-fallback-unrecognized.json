@@ -1,0 +1,10 @@
+{
+  "name": "Fallback Unrecognized Message",
+  "nodes": [
+    {"parameters":{"httpMethod":"POST","path":"instagram/fallback","responseMode":"lastNode"},"id":"WebhookFallback","name":"Webhook Fallback","type":"n8n-nodes-base.webhook","typeVersion":2,"position":[260,200]},
+    {"parameters":{"jsCode":"return [{json:{response:'Desculpe, não entendi 😕. Pode responder com: catálogo, revenda ou uso próprio?'}}];"},"id":"BuildFallback","name":"Build Fallback","type":"n8n-nodes-base.code","typeVersion":2,"position":[500,200]},
+    {"parameters":{"url":"=https://graph.facebook.com/v20.0/{{$env.IG_BUSINESS_ID}}/messages","authentication":"genericCredentialType"},"id":"SendFallback","name":"Send Fallback","type":"n8n-nodes-base.httpRequest","typeVersion":4,"position":[740,200]}
+  ],
+  "connections": {"Webhook Fallback":{"main":[[{"node":"Build Fallback","type":"main","index":0}]]},"Build Fallback":{"main":[[{"node":"Send Fallback","type":"main","index":0}]]}},
+  "active": false
+}

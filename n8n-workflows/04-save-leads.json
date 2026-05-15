@@ -1,0 +1,10 @@
+{
+  "name": "Save Leads + Messages",
+  "nodes": [
+    {"parameters":{"httpMethod":"POST","path":"instagram/save-lead","responseMode":"lastNode"},"id":"WebhookLead","name":"Webhook Lead","type":"n8n-nodes-base.webhook","typeVersion":2,"position":[240,240]},
+    {"parameters":{"url":"={{$env.SUPABASE_URL}}/rest/v1/leads","authentication":"genericCredentialType"},"id":"UpsertLead","name":"Upsert Lead","type":"n8n-nodes-base.httpRequest","typeVersion":4,"position":[500,240]},
+    {"parameters":{"url":"={{$env.SUPABASE_URL}}/rest/v1/messages","authentication":"genericCredentialType"},"id":"InsertMessage","name":"Insert Message","type":"n8n-nodes-base.httpRequest","typeVersion":4,"position":[740,240]}
+  ],
+  "connections": {"Webhook Lead":{"main":[[{"node":"Upsert Lead","type":"main","index":0}]]},"Upsert Lead":{"main":[[{"node":"Insert Message","type":"main","index":0}]]}},
+  "active": false
+}
