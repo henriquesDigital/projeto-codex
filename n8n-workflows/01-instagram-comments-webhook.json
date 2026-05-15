@@ -1,0 +1,10 @@
+{
+  "name": "IG Comments Webhook -> Start Automation",
+  "nodes": [
+    {"parameters":{"httpMethod":"POST","path":"instagram/comments","responseMode":"lastNode"},"id":"Webhook","name":"Webhook Comments","type":"n8n-nodes-base.webhook","typeVersion":2,"position":[260,220]},
+    {"parameters":{"url":"={{$env.SUPABASE_URL}}/rest/v1/automations?trigger_type=eq.comment_post_reels&is_active=eq.true","authentication":"genericCredentialType"},"id":"GetAutomations","name":"Get Active Automations","type":"n8n-nodes-base.httpRequest","typeVersion":4,"position":[520,220]},
+    {"parameters":{"jsCode":"return [{json:{ok:true,source:'comments',payload:$json}}];"},"id":"Prepare","name":"Prepare Event","type":"n8n-nodes-base.code","typeVersion":2,"position":[760,220]}
+  ],
+  "connections": {"Webhook Comments":{"main":[[{"node":"Get Active Automations","type":"main","index":0}]]},"Get Active Automations":{"main":[[{"node":"Prepare Event","type":"main","index":0}]]}},
+  "active": false
+}

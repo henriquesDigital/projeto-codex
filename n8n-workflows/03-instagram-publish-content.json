@@ -1,0 +1,10 @@
+{
+  "name": "IG Publish Post/Reels",
+  "nodes": [
+    {"parameters":{"rule":{"interval":[{"field":"hours","hoursInterval":6}]}},"id":"Schedule","name":"Schedule","type":"n8n-nodes-base.scheduleTrigger","typeVersion":1.2,"position":[260,220]},
+    {"parameters":{"url":"={{$env.SUPABASE_URL}}/rest/v1/content_queue?status=eq.pending&limit=1","authentication":"genericCredentialType"},"id":"GetQueue","name":"Get Queue","type":"n8n-nodes-base.httpRequest","typeVersion":4,"position":[500,220]},
+    {"parameters":{"url":"=https://graph.facebook.com/v20.0/{{$env.IG_BUSINESS_ID}}/media","authentication":"genericCredentialType"},"id":"CreateContainer","name":"Create Media Container","type":"n8n-nodes-base.httpRequest","typeVersion":4,"position":[740,220]}
+  ],
+  "connections": {"Schedule":{"main":[[{"node":"Get Queue","type":"main","index":0}]]},"Get Queue":{"main":[[{"node":"Create Media Container","type":"main","index":0}]]}},
+  "active": false
+}

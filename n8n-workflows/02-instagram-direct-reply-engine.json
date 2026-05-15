@@ -1,0 +1,11 @@
+{
+  "name": "IG DM Engine",
+  "nodes": [
+    {"parameters":{"httpMethod":"POST","path":"instagram/direct","responseMode":"lastNode"},"id":"WebhookDM","name":"Webhook Direct","type":"n8n-nodes-base.webhook","typeVersion":2,"position":[200,240]},
+    {"parameters":{"jsCode":"const text = ($json.entry?.[0]?.messaging?.[0]?.message?.text || '').toLowerCase(); return [{json:{text,userId:$json.entry?.[0]?.messaging?.[0]?.sender?.id,raw:$json}}];"},"id":"Normalize","name":"Normalize","type":"n8n-nodes-base.code","typeVersion":2,"position":[430,240]},
+    {"parameters":{"url":"={{$env.SUPABASE_URL}}/rest/v1/rpc/find_step_and_response","authentication":"genericCredentialType"},"id":"ResolveStep","name":"Resolve Step","type":"n8n-nodes-base.httpRequest","typeVersion":4,"position":[670,240]},
+    {"parameters":{"url":"=https://graph.facebook.com/v20.0/{{$env.IG_BUSINESS_ID}}/messages","sendBody":true,"bodyParameters":{"parameters":[{"name":"recipient","value":"={{JSON.stringify({id:$json.userId})}}"},{"name":"message","value":"={{JSON.stringify({text:$json.response_text})}}"}]},"authentication":"genericCredentialType"},"id":"SendDM","name":"Send DM","type":"n8n-nodes-base.httpRequest","typeVersion":4,"position":[920,240]}
+  ],
+  "connections": {"Webhook Direct":{"main":[[{"node":"Normalize","type":"main","index":0}]]},"Normalize":{"main":[[{"node":"Resolve Step","type":"main","index":0}]]},"Resolve Step":{"main":[[{"node":"Send DM","type":"main","index":0}]]}},
+  "active": false
+}
