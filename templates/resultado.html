@@ -1,13 +1,8 @@
-<!doctype html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Resultado</title>
-</head>
-<body>
-    <p>🎯 Com base na sua meta de crescimento, recomendamos um investimento inicial a partir de R$ 700/mês em anúncios, além do valor de gestão da campanha. Esse valor permite aplicar estratégias com volume suficiente para gerar resultados reais, previsíveis e escaláveis.</p>
-    <p>Você está de acordo com investir esse valor?</p>
-    <a href="{{ whatsapp_link }}">Sim</a>
-    <a href="{{ url_for('nao', nome=nome, segmento=segmento) }}">Não</a>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Resultado{% endblock %}
+{% block content %}
+<p>🎯 Com base na sua meta de crescimento, recomendamos um investimento inicial a partir de R$ 700/mês em anúncios, além do valor de gestão da campanha. Esse valor permite aplicar estratégias com volume suficiente para gerar resultados reais, previsíveis e escaláveis.</p>
+<p>Você está de acordo com investir esse valor?</p>
+<a href="{{ whatsapp_link }}">Sim</a>
+<a href="{{ url_for('nao', nome=nome, segmento=segmento) }}">Não</a>
+{% endblock %}
