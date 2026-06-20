@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vitra Max Vidros - Cortina de Vidro Camboriú</title>
+    <meta name="description" content="Especialistas em cortina de vidro Camboriú e envidraçamento de sacadas SC. Instalação padrão Balcony Brasil com certificado Falcão Bauer.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="topo">
+        <div class="container">
+            <img src="https://via.placeholder.com/150x50?text=Vitra+Max" alt="Vitra Max Vidros Ltda logo" class="logo">
+            <nav class="menu">
+                <a href="#sobre">Sobre</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#galeria">Galeria</a>
+                <a href="#depoimentos">Depoimentos</a>
+                <a href="#contato">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="overlay">
+            <h1>Envidraçamento de Sacadas em Santa Catarina</h1>
+            <p>Licenciada oficial Balcony Brasil – certificado Falcão Bauer</p>
+            <a href="#contato" class="btn-cta">Solicite orçamentos</a>
+        </div>
+    </section>
+
+    <section id="sobre" class="section">
+        <div class="container">
+            <h2>Sobre a Vitra Max Vidros</h2>
+            <p>A Vitra Max Vidros Ltda é licenciada da Balcony Brasil em Santa Catarina, atuando há mais de 10 anos no mercado de envidraçamento de sacadas. Seguimos rigorosamente a norma NBR 16259 e entregamos projetos com a qualidade Balcony Brasil.</p>
+        </div>
+    </section>
+
+    <section id="servicos" class="section bg-light">
+        <div class="container">
+            <h2>Serviços</h2>
+            <div class="servicos-grid">
+                <div class="servico">
+                    <img src="https://via.placeholder.com/100?text=Icon1" alt="Cortinas de vidro retráteis">
+                    <h3>Cortinas de vidro retráteis</h3>
+                    <p>Instalação de sistemas modernos e práticos para sacadas.</p>
+                </div>
+                <div class="servico">
+                    <img src="https://via.placeholder.com/100?text=Icon2" alt="Envidraçamento de sacadas">
+                    <h3>Envidraçamento de sacadas</h3>
+                    <p>Projetos residenciais e comerciais com acabamento impecável.</p>
+                </div>
+                <div class="servico">
+                    <img src="https://via.placeholder.com/100?text=Icon3" alt="Manutenção técnica">
+                    <h3>Manutenção técnica de vidro</h3>
+                    <p>Garantia de segurança e durabilidade para sua estrutura.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="section">
+        <div class="container">
+            <h2>Galeria</h2>
+            <div class="galeria-grid">
+                <img src="https://via.placeholder.com/300x200?text=Obra1" alt="Projeto 1" onclick="abrirLightbox(this)">
+                <img src="https://via.placeholder.com/300x200?text=Obra2" alt="Projeto 2" onclick="abrirLightbox(this)">
+                <img src="https://via.placeholder.com/300x200?text=Obra3" alt="Projeto 3" onclick="abrirLightbox(this)">
+                <img src="https://via.placeholder.com/300x200?text=Obra4" alt="Projeto 4" onclick="abrirLightbox(this)">
+            </div>
+        </div>
+    </section>
+
+    <section id="depoimentos" class="section bg-light">
+        <div class="container">
+            <h2>Depoimentos</h2>
+            <blockquote>
+                "Serviço impecável e atendimento excelente. Minha sacada ficou linda!" – Ana P.
+            </blockquote>
+            <blockquote>
+                "Profissionais muito atenciosos e material de primeira qualidade." – João R.
+            </blockquote>
+        </div>
+    </section>
+
+    <section id="contato" class="section">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <form id="form-contato" action="mailto:contato@vitramax.com" method="POST">
+                <label>Nome<br><input type="text" name="nome" required></label>
+                <label>Email<br><input type="email" name="email" required></label>
+                <label>Mensagem<br><textarea name="mensagem" required></textarea></label>
+                <button type="submit">Enviar</button>
+            </form>
+            <div class="mapa">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3520.387601700883!2d-48.65239!3d-27.006305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94d8a693ed045a63%3A0x8533eb7ed2da71e8!2sCambori%C3%BA%2C%20SC!5e0!3m2!1spt-BR!2sbr!4v0000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>CNPJ 00.000.000/0001-00 - Vitra Max Vidros Ltda</p>
+            <p>
+                <a href="https://www.instagram.com" target="_blank">Instagram</a> |
+                <a href="https://www.facebook.com" target="_blank">Facebook</a>
+            </p>
+            <section class="politica">
+                <a href="#">Política de privacidade</a>
+            </section>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5547999999999" class="whatsapp" target="_blank">Chame no WhatsApp</a>
+
+    <div id="lightbox" onclick="fecharLightbox()">
+        <img src="" alt="Imagem ampliada" id="lightbox-img">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
